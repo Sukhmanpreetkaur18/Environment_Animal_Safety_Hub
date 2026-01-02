@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/components/hero.css" />
     <link rel="stylesheet" href="css/components/sections.css" />
     <link rel="stylesheet" href="css/components/scrollBar.css" />
+    <link rel="stylesheet" href="css/components/modal.css" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -304,9 +305,9 @@
               We rescue, treat, and rehabilitate injured and abandoned animals,
               giving them a second chance at life.
             </p>
-            <a href="#animal" class="service-link">
-              Learn More <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <a href="javascript:void(0)" class="service-link open-modal-btn" data-id="animal-rescue">
+    Learn More <i class="fa-solid fa-arrow-right"></i>
+</a>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
@@ -318,9 +319,9 @@
               Promoting proper waste segregation, recycling, and reducing
               plastic usage in communities.
             </p>
-            <a href="#waste" class="service-link">
-              Learn More <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <a href="javascript:void(0)" class="service-link open-modal-btn" data-id="waste-mgmt">
+    Learn More <i class="fa-solid fa-arrow-right"></i>
+</a>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
@@ -332,9 +333,9 @@
               Raising awareness about climate change and promoting sustainable
               lifestyle choices.
             </p>
-            <a href="#climate" class="service-link">
-              Learn More <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <a href="javascript:void(0)" class="service-link open-modal-btn" data-id="climate-action">
+    Learn More <i class="fa-solid fa-arrow-right"></i>
+</a>
           </div>
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
@@ -346,9 +347,9 @@
               Organizing community drives to plant trees and create urban green
               spaces.
             </p>
-            <a href="#plants" class="service-link">
-              Learn More <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <a href="javascript:void(0)" class="service-link open-modal-btn" data-id="tree-plant">
+    Learn More <i class="fa-solid fa-arrow-right"></i>
+</a>
           </div>
         </div>
       </div>
@@ -386,9 +387,9 @@
                 to a furry friend in need.
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Adopt Now <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="adopt-pets">
+    Adopt Now <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-heart"></i> 1.2K adopted
                 </div>
@@ -413,9 +414,9 @@
                 natural habitats.
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Learn More <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="wildlife">
+    Learn More <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-shield-heart"></i> 500+ protected
                 </div>
@@ -440,9 +441,9 @@
                 feeding programs.
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Join Program <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="feeding">
+    Join Program <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-bowl-food"></i> 5K+ fed daily
                 </div>
@@ -485,9 +486,9 @@
                 single-use plastics.
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Get Tips <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="plastic">
+    Get Tips <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-trash"></i> 10T+ reduced
                 </div>
@@ -512,9 +513,9 @@
                 counts!
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Learn How <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="energy">
+    Learn How <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-bolt"></i> 30% savings
                 </div>
@@ -539,9 +540,9 @@
                 forests.
               </p>
               <div class="card-footer">
-                <a href="#" class="card-btn">
-                  Join Drive <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="javascript:void(0)" class="card-btn open-modal-btn" data-id="tree-drive">
+    Join Drive <i class="fa-solid fa-arrow-right"></i>
+</a>
                 <div class="card-stats">
                   <i class="fa-solid fa-tree"></i> 50K+ planted
                 </div>
@@ -657,7 +658,7 @@
               <a href="#" class="btn btn-primary">
                 <i class="fa-solid fa-leaf"></i> Explore Tips
               </a>
-              <a href="#" class="btn btn-outline">
+              <a href="pages/join-garden-drive.html" class="btn btn-outline">
                 <i class="fa-solid fa-calendar"></i> Join Garden Drive
               </a>
             </div>
@@ -838,150 +839,126 @@
 
     <!-- Report Section -->
     <section id="report" class="report-section">
-      <div class="section-container">
-        <div class="report-content">
-          <div class="report-info" data-aos="fade-right">
-            <span class="section-tag">
-              <i class="fa-solid fa-bullhorn"></i> Report Issues
-            </span>
-            <h2 class="section-title">Report Pollution & Trash Dumping</h2>
-            <p class="section-desc">
-              Spotted illegal dumping or pollution in your area? Report it here
-              and we'll work with local authorities to resolve the issue.
-            </p>
+    <div class="section-container">
+      <div class="report-content">
+        <div class="report-info">
+          <span class="section-tag">
+            <i class="fa-solid fa-bullhorn"></i> Report Issues
+          </span>
+          <h2 class="section-title">Report Pollution & Trash Dumping</h2>
+          <p class="section-desc">
+            Spotted illegal dumping or pollution in your area? Report it here
+            and we'll work with local authorities to resolve the issue.
+          </p>
 
-            <div class="report-stats">
-              <div class="report-stat">
-                <i class="fa-solid fa-file-alt"></i>
-                <div>
-                  <span class="stat-num">2,500+</span>
-                  <span class="stat-text">Reports Filed</span>
-                </div>
-              </div>
-              <div class="report-stat">
-                <i class="fa-solid fa-check-circle"></i>
-                <div>
-                  <span class="stat-num">85%</span>
-                  <span class="stat-text">Issues Resolved</span>
-                </div>
+          <div class="report-stats">
+            <div class="report-stat">
+              <i class="fa-solid fa-file-alt"></i>
+              <div>
+                <span class="stat-num" data-target="2500">0</span>
+                <span class="stat-text">Reports Filed</span>
               </div>
             </div>
-
-            <div class="recent-reports">
-              <h4><i class="fa-solid fa-clock"></i> Recent Reports</h4>
-              <ul class="report-list">
-                <li>
-                  <span class="report-status resolved"></span>
-                  Trash dumped near River Park – <strong>Raj</strong>
-                  <span class="report-badge">Resolved</span>
-                </li>
-                <li>
-                  <span class="report-status pending"></span>
-                  Plastic waste at Main Street – <strong>Ananya</strong>
-                  <span class="report-badge pending">In Progress</span>
-                </li>
-                <li>
-                  <span class="report-status resolved"></span>
-                  Illegal dumping near school – <strong>Sneha</strong>
-                  <span class="report-badge">Resolved</span>
-                </li>
-              </ul>
+            <div class="report-stat">
+              <i class="fa-solid fa-check-circle"></i>
+              <div>
+                <span class="stat-num" data-target="85">0</span>
+                <span class="stat-text">Issues Resolved</span>
+              </div>
             </div>
           </div>
 
-          <div class="report-form-wrapper" data-aos="fade-left">
-            <form class="report-form" id="reportForm">
-              <h3><i class="fa-solid fa-pen-to-square"></i> Submit a Report</h3>
-
-              <div class="form-group">
-                <label for="name">
-                  <i class="fa-solid fa-user"></i> Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="email">
-                  <i class="fa-solid fa-envelope"></i> Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="location">
-                  <i class="fa-solid fa-location-dot"></i> Location
-                </label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  placeholder="Enter location of issue"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="issueType">
-                  <i class="fa-solid fa-list"></i> Issue Type
-                </label>
-                <select id="issueType" name="issueType" required>
-                  <option value="">Select issue type</option>
-                  <option value="garbage">Garbage Dumping</option>
-                  <option value="plastic">Plastic Pollution</option>
-                  <option value="water">Water Pollution</option>
-                  <option value="air">Air Pollution</option>
-                  <option value="noise">Noise Pollution</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="description">
-                  <i class="fa-solid fa-message"></i> Description
-                </label>
-                <textarea
-                  id="description"
-                  name="description"
-                  rows="4"
-                  placeholder="Describe the issue in detail..."
-                  required
-                ></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="photo">
-                  <i class="fa-solid fa-camera"></i> Upload Photo (Optional)
-                </label>
-                <div class="file-upload">
-                  <input type="file" id="photo" name="photo" accept="image/*" />
-                  <div class="file-upload-label">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <span>Click to upload or drag and drop</span>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block">
-                <i class="fa-solid fa-paper-plane"></i> Submit Report
-              </button>
-            </form>
+          <div class="recent-reports">
+            <h4><i class="fa-solid fa-clock"></i> Recent Reports</h4>
+            <ul class="report-list">
+              <li>
+                <span class="report-status resolved"></span>
+                Trash dumped near River Park – <strong>Raj</strong>
+                <span class="report-badge">Resolved</span>
+              </li>
+              <li>
+                <span class="report-status pending"></span>
+                Plastic waste at Main Street – <strong>Ananya</strong>
+                <span class="report-badge pending">In Progress</span>
+              </li>
+              <li>
+                <span class="report-status resolved"></span>
+                Illegal dumping near school – <strong>Sneha</strong>
+                <span class="report-badge">Resolved</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
 
+        <div class="report-form-wrapper">
+          <form class="report-form" id="reportForm">
+            <h3><i class="fa-solid fa-pen-to-square"></i> Submit a Report</h3>
+
+            <div class="form-group">
+              <label for="name">
+                <i class="fa-solid fa-user"></i> Your Name
+              </label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">
+                <i class="fa-solid fa-envelope"></i> Email Address
+              </label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="location">
+                <i class="fa-solid fa-location-dot"></i> Location
+              </label>
+              <input type="text" id="location" name="location" placeholder="Enter location of issue" required />
+            </div>
+
+            <div class="form-group">
+              <label for="issueType">
+                <i class="fa-solid fa-list"></i> Issue Type
+              </label>
+              <select id="issueType" name="issueType" required>
+                <option value="">Select issue type</option>
+                <option value="garbage">Garbage Dumping</option>
+                <option value="plastic">Plastic Pollution</option>
+                <option value="water">Water Pollution</option>
+                <option value="air">Air Pollution</option>
+                <option value="noise">Noise Pollution</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="description">
+                <i class="fa-solid fa-message"></i> Description
+              </label>
+              <textarea id="description" name="description" rows="4" placeholder="Describe the issue in detail..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="photo">
+                <i class="fa-solid fa-camera"></i> Upload Photo (Optional)
+              </label>
+              <div class="file-upload" id="fileUpload">
+                <input type="file" id="photo" name="photo" accept="image/*" />
+                <div class="file-upload-label">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <span>Click to upload or drag and drop</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn">
+              <i class="fa-solid fa-paper-plane"></i> Submit Report
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
     <!-- Newsletter Section -->
     <section class="newsletter-section">
       <div class="newsletter-container" data-aos="zoom-in">
@@ -1183,5 +1160,20 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
+    <script src="/frontend/src/js/pages/adoption.js"></script>
+
+    <div class="custom-modal-overlay" id="infoModal">
+        <div class="custom-modal-content">
+            <button class="custom-modal-close" onclick="closeInfoModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-inner">
+                <div class="modal-header-content" id="modalHeader">
+                    </div>
+                <div class="modal-body-content" id="modalBody">
+                    </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
