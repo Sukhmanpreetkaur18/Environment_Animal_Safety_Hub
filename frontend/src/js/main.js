@@ -938,3 +938,4 @@ showEcoFact();
 
 // Change fact every 5 seconds
 setInterval(showEcoFact, 5000);
+
