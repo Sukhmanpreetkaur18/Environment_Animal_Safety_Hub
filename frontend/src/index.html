@@ -75,8 +75,6 @@
         <span></span>
       </div>
 
-
-
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
@@ -85,11 +83,14 @@
         <li><a href="pages/sos.html" class="nav-link">🆘 SOS Emergency</a></li>
         <li><a href="#environment" class="nav-link">Environment</a></li>
         <li><a href="#quiz" class="nav-link">Kids Zone</a></li>
-        <li><a href="#report" class="nav-link">Report</a></li>
+        <li><a href="./pages/report.html" class="nav-link">Report</a></li>
         <li><a href="../src/pages/contact.html" class="nav-link">Contact</a></li>
         <li class="nav-auth">
           <a href="/frontend/src/pages/Login.html" class="btn-login">Login</a>
           <a href="/frontend/src/pages/Signup.html" class="btn-signup">Sign Up</a>
+          <div class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+          </div>
         </li>
       </ul>
     </div>
@@ -504,6 +505,36 @@
       </div>
     </div>
   </section>
+<!-- 🌍 Living Earth Avatar -->
+<section class="earth-wrapper">
+  <h2>Living Earth 🌍</h2>
+  <p id="earthText">Earth is healthy and smiling 🌱</p>
+
+  <div class="earth-container">
+    <!-- Sun Rays -->
+    <div class="sun-rays"></div>
+
+    <!-- Earth -->
+    <div id="earth" class="earth happy">
+      🌍
+      <div class="cracks"></div>
+    </div>
+
+    <!-- Rain -->
+    <div class="rain"></div>
+  </div>
+
+  <!-- Demo Buttons (remove in final submission if needed) -->
+  <div class="demo-controls">
+    <button onclick="updateEarth(85)">Happy</button>
+    <button onclick="updateEarth(45)">Sad</button>
+    <button onclick="updateEarth(15)">Critical</button>
+  </div>
+
+  <!-- Sounds -->
+  <audio id="birdsSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3e3d9e5fd7.mp3"></audio>
+  <audio id="heartSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_8e9b5c07b3.mp3"></audio>
+</section>
 
 
   <!-- Environment Section -->

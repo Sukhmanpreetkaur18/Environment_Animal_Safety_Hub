@@ -1182,50 +1182,43 @@ const toggle = document.getElementById("themeToggle");
   });
 
  
-const chatBody = document.getElementById("chatBody");
 
-function sendMessage() {
-  const input = document.getElementById("userInput");
-  const message = input.value.trim();
-  if (!message) return;
+function updateEarth(score) {
+  const earth = document.getElementById("earth");
+  const text = document.getElementById("earthText");
+  const sun = document.querySelector(".sun-rays");
+  const rain = document.querySelector(".rain");
+  const birds = document.getElementById("birdsSound");
+  const heart = document.getElementById("heartSound");
 
-  addMessage(message, "user-message");
-  input.value = "";
+  earth.className = "earth";
+  sun.style.opacity = 0;
+  rain.style.opacity = 0;
 
-  setTimeout(() => {
-    const reply = getBotReply(message.toLowerCase());
-    addMessage(reply, "bot-message");
-  }, 600);
+  birds.pause();
+  heart.pause();
+  birds.currentTime = 0;
+  heart.currentTime = 0;
+
+  if (score >= 60) {
+    earth.classList.add("happy");
+    sun.style.opacity = 1;
+    birds.play();
+    text.innerText = "Earth is happy and thriving 🌱";
+  }
+  else if (score >= 20) {
+    earth.classList.add("sad");
+    rain.style.opacity = 1;
+    text.innerText = "Earth is sad... needs care 💧";
+  }
+  else {
+    earth.classList.add("critical");
+    rain.style.opacity = 1;
+    heart.play();
+    text.innerText = "Earth is critical! Act now 🚨";
+  }
 }
 
-function addMessage(text, className) {
-  const div = document.createElement("div");
-  div.className = className;
-  div.innerText = text;
-  chatBody.appendChild(div);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-function getBotReply(msg) {
-  if (msg.includes("carbon")) {
-    return "Reducing carbon footprint helps slow climate change 🌱 Try using public transport!";
-  }
-  if (msg.includes("plastic")) {
-    return "Plastic harms oceans 🐢 Try reusable bags and bottles.";
-  }
-  if (msg.includes("trees")) {
-    return "Trees give oxygen and shelter 🌳 Planting even one helps!";
-  }
-  if (msg.includes("water")) {
-    return "Save water by fixing leaks and using buckets 🚿";
-  }
-  if (msg.includes("hello") || msg.includes("hi")) {
-    return "Hello! 😊 Ask me about environment, climate or sustainability.";
-  }
-  if (msg.includes("help")) {
-    return "I can guide you on eco-friendly habits 🌍";
-  }
-
-  return "That's interesting 🤔 Try asking about climate, trees, plastic, or water.";
-}
+/* Example auto-call */
+updateEarth(75);
 
