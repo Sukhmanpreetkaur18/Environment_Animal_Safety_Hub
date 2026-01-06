@@ -40,12 +40,12 @@ function displayAnimals(animals) {
 
     grid.innerHTML = animals.map(animal => `
         <div class="animal-card" onclick="openModal(${animal.id})">
-            <div class="card-image-wrapper">
+            <div class="card-image">
                 <img src="${animal.image}" alt="${animal.name}" class="animal-image" 
                      onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
                 <span class="status-badge-overlay status-${animal.status}">${animal.status}</span>
             </div>
-            <div class="animal-content">
+            <div class="card-content">
                 <div class="card-header">
                     <h3 class="animal-name">${animal.name}</h3>
                     <p class="scientific-name">${animal.scientificName}</p>
@@ -54,7 +54,7 @@ function displayAnimals(animals) {
                 <div class="card-info">
                     <div class="info-item">
                         <span class="info-icon">🏠</span>
-                        <span class="info-text">${animal.habitat}</span>
+                        <span class="info-text"> &nbsp;${animal.habitat}</span>
                     </div>
                 </div>
 
