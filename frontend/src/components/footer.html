@@ -1,79 +1,103 @@
-<!-- Newsletter Section -->
-<section class="newsletter-section">
-  <div class="newsletter-container">
-    <div class="newsletter-content">
-      <h2 class="newsletter-title">Stay Updated with Our Initiatives</h2>
-      <p class="newsletter-description">
-        Subscribe to receive updates about environmental awareness and animal safety campaigns
-      </p>
-      
-      <form class="newsletter-form" id="newsletterForm">
-        <div class="newsletter-input-group">
-          <input 
-            type="email" 
-            class="newsletter-email-input" 
-            placeholder="Enter your email address"
-            required
-            aria-label="Email address for newsletter subscription"
-          />
-          <button 
-            type="submit" 
-            class="newsletter-subscribe-btn"
-            aria-label="Subscribe to newsletter"
-          >
-            Subscribe
-          </button>
+<!-- Footer -->
+<footer id="contact" class="eco-footer">
+  <div class="footer-top">
+    <div class="footer-container">
+      <!-- Logo & About -->
+      <div class="footer-col footer-about">
+        <div class="footer-logo-wrapper">
+          <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="footer-logo" alt="Eco Logo" />
+          <span class="footer-brand">Environment & Animal Safety Hub</span>
         </div>
-        <div class="newsletter-message" id="newsletterMessage"></div>
-      </form>
-      
-      <p class="newsletter-privacy">
-        We respect your privacy. Unsubscribe at any time.
-      </p>
-    </div>
+        <p class="footer-desc">
+          Empowering communities to protect wildlife and preserve our natural environment through education, action, and sustainable living.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" class="social" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
 
-    <div class="newsletter-icon">
-      <i class="fas fa-bell"></i>
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#environment">Environment</a></li>
+          <li><a href="index.html#animal">Animal Safety</a></li>
+          <li><a href="pages/wildlife-learning.html">Games</a></li>
+          <li><a href="pages/contact.html">Contact / Report</a></li>
+        </ul>
+      </div>
+
+      <!-- Tools -->
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul class="footer-links-list">
+          <li><a href="pages/impact-calculator.html">Impact Calculator</a></li>
+          <li><a href="pages/sos.html">SOS Emergency</a></li>
+          <li><a href="pages/visual-mueseum.html">Visual Museum</a></li>
+          <li><a href="index.html#climate-quiz">Eco Quiz</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul class="footer-links-list">
+          <li><a href="pages/feeding-awareness.html">Feeding Awareness</a></li>
+          <li><a href="pages/plant-care.html">Plant Care Guide</a></li>
+          <li><a href="pages/wildlife.html">Wildlife Protection</a></li>
+          <li><a href="pages/myth-vs-fact.html">Myth vs Fact</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-col footer-newsletter-col">
+        <h4>Newsletter</h4>
+        <p class="newsletter-footer-text">Stay updated with our latest news and eco-tips.</p>
+        <div class="newsletter-footer-form">
+          <div class="newsletter-footer-input-group">
+            <input 
+              type="email" 
+              id="newsletterEmailInput"
+              class="newsletter-footer-input" 
+              placeholder="your@email.com"
+              required
+              aria-label="Email address for newsletter subscription"
+            />
+            <button 
+              type="button"
+              id="newsletterSubmitBtn"
+              class="newsletter-footer-btn"
+              aria-label="Subscribe to newsletter"
+            >
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <div class="newsletter-footer-message" id="newsletterMessage"></div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const newsletterForm = document.getElementById('newsletterForm');
-    const newsletterMessage = document.getElementById('newsletterMessage');
-    
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const emailInput = this.querySelector('.newsletter-email-input');
-        const email = emailInput.value.trim();
-        
-        if (email) {
-          // Store email in localStorage (for UI-only implementation)
-          let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
-          
-          if (!subscribers.includes(email)) {
-            subscribers.push(email);
-            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
-            
-            // Show success message
-            newsletterMessage.textContent = '✓ Successfully subscribed! Thank you.';
-            newsletterMessage.className = 'newsletter-message success';
-            emailInput.value = '';
-            
-            // Clear message after 5 seconds
-            setTimeout(() => {
-              newsletterMessage.textContent = '';
-              newsletterMessage.className = 'newsletter-message';
-            }, 5000);
-          } else {
-            newsletterMessage.textContent = '📧 This email is already subscribed.';
-            newsletterMessage.className = 'newsletter-message info';
-          }
-        }
-      });
-    }
-  });
-</script>
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <div class="footer-bottom-content">
+        <p class="copyright-text">
+          <span>© 2026 <strong>EcoLife</strong></span>
+          <span class="footer-credit-sep">|</span>
+          <span>Made with ❤️ by <strong>Jagrati</strong> & <strong>Open Source Contributors</strong></span>
+        </p>
+        <div class="footer-legal-links">
+          <a href="pages/privacy-policy.html">Privacy Policy</a>
+          <a href="pages/terms-and-conditions.html">Terms & Conditions</a>
+          <a href="pages/cookie-policy.html">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -9,6 +9,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../css/pages/visual_museum.css">
+
+  <link rel="stylesheet" href="../css/components/footer.css" />
 </head>
 <body>
     <div class="theme-toggle" id="themeToggle">
@@ -59,11 +61,9 @@
             </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 EcoLife Virtual Museum. Preserving memories, protecting futures. 🌿</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
     <script src="../js/pages/visual_museum.js"></script>
     <script>
@@ -92,5 +92,6 @@ function updateThemeIcon(theme) {
     themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
     </script>
+  <script src="../js/components/footer-loader.js"></script>
 </body>
 </html>

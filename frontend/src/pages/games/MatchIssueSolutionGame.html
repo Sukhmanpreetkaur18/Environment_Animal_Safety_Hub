@@ -158,6 +158,8 @@ footer {
   }
 }
 </style>
+
+  <link rel="stylesheet" href="../../css/components/footer.css" />
 </head>
 
 <body>
@@ -213,9 +215,8 @@ footer {
 
   <div id="game" class="game"></div>
 
-  <footer>
-    ⭐ Score: <span id="score">0</span>
-  </footer>
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
 </div>
 
 <script>
@@ -323,5 +324,6 @@ function match(el, sol, set) {
 function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
 </script>
 
+  <script src="../../js/components/footer-loader.js"></script>
 </body>
 </html>

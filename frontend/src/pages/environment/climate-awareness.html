@@ -750,6 +750,8 @@
       animation: fadeInUp 0.6s ease forwards;
     }
   </style>
+
+  <link rel="stylesheet" href="../../css/components/footer.css" />
 </head>
 
 <body data-theme="light">
@@ -991,28 +993,9 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <h2 class="footer-title animate">Join the Climate Movement</h2>
-      <div class="footer-links">
-        <a href="../../index.html" class="footer-link">Home</a>
-        <a href="../animal-safety/extinct-animals.html" class="footer-link">Extinct Animals</a>
-        <a href="../feeding-awareness.html" class="footer-link">Feeding Awareness</a>
-        <a href="../privacy-policy.html" class="footer-link">Privacy Policy</a>
-        <a href="#contact" class="footer-link">Contact Us</a>
-      </div>
-      <p class="copyright animate">
-        © 2024 EcoLife • Act for Climate 🌱 • 
-        <span id="currentYear"></span>
-      </p>
-      <p class="copyright animate" style="margin-top: 15px; font-size: 0.8rem;">
-        "The Earth does not belong to us: we belong to the Earth." – Marlee Matlin
-      </p>
-    </div>
-  </footer>
-
-  <script>
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+<script>
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
@@ -1132,5 +1115,6 @@
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
+  <script src="../../js/components/footer-loader.js"></script>
 </body>
 </html>
