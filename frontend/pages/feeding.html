@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>Animal Feeding | EcoLife</title>
@@ -8,16 +9,20 @@
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/pages/feeding.css">
 
-  <link rel="stylesheet" href="../css/components/footer.css" />
-  <link rel="stylesheet" href="../css/components/navbar.css" />
+    <link rel="stylesheet" href="../css/components/footer.css" />
+    <link rel="stylesheet" href="../css/components/navbar.css" />
+    <link rel="stylesheet" href="../css/global/variables.css" />
+   
+    <link rel="stylesheet" href="../css/components/Login_SignUp.css" />
 </head>
+
 <body>
-  <div id="navbar-container"></div>
+    <div id="navbar-container"></div>
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
@@ -26,10 +31,13 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-content">
-            <span class="badge">🍽️ FEEDING GUIDE</span>
-            <h1>Nourish with Care</h1>
-            <p>Learn the right way to feed animals. Proper nutrition saves lives and maintains ecological balance.</p>
+        <div class="overlay">
+            <div class="hero-content">
+                <span class="badge">🍽️ FEEDING GUIDE</span>
+                <h1>Nourish with Care</h1>
+                <p>Learn the right way to feed animals. Proper nutrition saves lives and maintains ecological balance.
+                </p>
+            </div>
         </div>
     </header>
 
@@ -81,7 +89,8 @@
                 <div class="guideline-list">
                     <div class="guideline-item" data-aos="fade-right">
                         <h4><i class="fas fa-check-circle"></i> What to Feed</h4>
-                        <p>Natural foods like grains, fruits, vegetables. Species-specific commercial food when available.</p>
+                        <p>Natural foods like grains, fruits, vegetables. Species-specific commercial food when
+                            available.</p>
                     </div>
                     <div class="guideline-item" data-aos="fade-right" data-aos-delay="100">
                         <h4><i class="fas fa-ban"></i> What to Avoid</h4>
@@ -99,8 +108,9 @@
         <section class="section">
             <div class="calculator" data-aos="fade-up">
                 <h2 class="section-title">Feeding Calculator</h2>
-                <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">Calculate the right amount of food based on animal type and size</p>
-                
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">Calculate the right amount
+                    of food based on animal type and size</p>
+
                 <form class="calculator-form" id="feedingCalculator">
                     <div class="form-group">
                         <label for="animalType">Animal Type</label>
@@ -114,7 +124,7 @@
                             <option value="deer">Deer</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="animalSize">Size/Weight</label>
                         <select id="animalSize" required>
@@ -125,10 +135,10 @@
                             <option value="xlarge">Extra Large (25kg+)</option>
                         </select>
                     </div>
-                    
+
                     <button type="button" class="calculate-btn" id="calculateBtn">Calculate Feeding Amount</button>
                 </form>
-                
+
                 <div class="result-box" id="resultBox">
                     <h3 style="color: var(--primary); margin-bottom: 15px;">Recommended Feeding</h3>
                     <div id="resultContent"></div>
@@ -239,17 +249,17 @@
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        
+
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
             document.body.classList.add('dark-theme');
             themeToggle.classList.add('dark');
         }
-        
+
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             themeToggle.classList.toggle('dark');
-            
+
             if (document.body.classList.contains('dark-theme')) {
                 localStorage.setItem('theme', 'dark');
             } else {
@@ -304,14 +314,14 @@
         calculateBtn.addEventListener('click', () => {
             const animalType = document.getElementById('animalType').value;
             const animalSize = document.getElementById('animalSize').value;
-            
+
             if (!animalType || !animalSize) {
                 alert('Please select both animal type and size');
                 return;
             }
-            
+
             const recommendation = feedingData[animalType][animalSize];
-            
+
             if (recommendation === "Not applicable") {
                 resultContent.innerHTML = `
                     <p style="color: var(--danger);"><strong>⚠️ Not Recommended:</strong> This size category doesn't apply to selected animal type.</p>
@@ -328,13 +338,14 @@
                     </p>
                 `;
             }
-            
+
             resultBox.classList.add('show');
         });
     </script>
-<!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
-<script src="../js/components/footer-loader.js"></script>
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+    <script src="../js/components/footer-loader.js"></script>
     <script src="../js/components/navbar-loader.js"></script>
 </body>
+
 </html>

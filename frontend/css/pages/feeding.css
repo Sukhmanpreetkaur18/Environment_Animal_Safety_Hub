@@ -111,11 +111,34 @@ body {
 .hero {
     text-align: center;
     padding: 80px 20px 60px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
+    background-image: url("https://images.unsplash.com/photo-1661108180212-803e64defd38?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    color: rgb(47, 135, 88);
+    text-shadow: 0px 0 2px rgb(255, 255, 255);
     margin-bottom: 40px;
+    font-weight: 800;
+    object-fit: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.overlay {
+    background: rgba(4, 54, 22, 0.268);
+    backdrop-filter: blur(4px) saturate(80%);
+    border: 2px solid rgba(188, 189, 188, 0.35);
+    border-radius: 20px;
+    width: 80%;
+    height: 80vh;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
 }
 
 .hero::before {
@@ -125,7 +148,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+
     background-size: cover;
 }
 
@@ -134,6 +157,7 @@ body {
     z-index: 1;
     max-width: 800px;
     margin: 0 auto;
+    top: -10%;
 }
 
 .badge {
@@ -151,10 +175,13 @@ body {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 15px;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 800;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 4px;
+    word-spacing: 2px;
+    text-shadow: 2px 0px 8px rgb(23, 20, 20);
 }
 
 .hero p {
@@ -174,26 +201,29 @@ body {
 /* Section Styles */
 .section {
     margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .section-title {
-    text-align: center;
+
     color: var(--text);
     margin-bottom: 40px;
     font-size: 2.2rem;
     font-weight: 700;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+
 }
 
 .section-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+
     width: 80px;
     height: 4px;
     background: var(--primary);
@@ -202,8 +232,9 @@ body {
 
 /* Feeding Schedule */
 .schedule-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
     margin-top: 40px;
 }
@@ -282,7 +313,10 @@ body {
     background: var(--bg-light);
     padding: 50px;
     border-radius: 25px;
-    margin: 60px auto;
+    margin: 60px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     max-width: 1000px;
     box-shadow: 0 10px 30px var(--shadow);
     border: 1px solid var(--border);
@@ -388,6 +422,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -414,8 +449,8 @@ body {
 
 /* Animal Food Cards */
 .animal-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    
     gap: 25px;
     margin-top: 40px;
 }
@@ -566,27 +601,27 @@ body {
     .hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .hero p {
         font-size: 1.1rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .guidelines,
     .calculator {
         padding: 30px;
     }
-    
+
     .theme-toggle {
         top: 15px;
         right: 15px;
         width: 45px;
         height: 45px;
     }
-    
+
     .container {
         padding: 0 15px;
     }
@@ -596,25 +631,37 @@ body {
     .hero {
         padding: 60px 20px 40px;
     }
-    
+
     .hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .section {
         margin: 40px 0;
     }
-    
+
     .guidelines,
     .calculator,
     .cta-section {
         padding: 25px;
     }
-    
+
     .schedule-card,
     .guideline-item,
     .animal-card,
     .tip-card {
         padding: 20px;
+    }
+}
+
+
+@media (max-width:660px) {
+    .schedule-grid{
+        display: flex;
+        flex-direction: column;
+    }
+    .animal-grid{
+        display: flex;
+        flex-direction: column;
     }
 }
