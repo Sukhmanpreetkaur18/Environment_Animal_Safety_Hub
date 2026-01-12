@@ -22,56 +22,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components/navbar.css" />
+  <link rel="stylesheet" href="../css/components/footer.css" />
+  <link rel="stylesheet" href="../css/pages/plant-care.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 
 <body>
 
   <div id="cursor-container"></div>
-<script src="../../js/components/loadComponents.js"></script>
+  <script src="../../js/components/loadComponents.js"></script>
 
   <div id="navbar-container"></div>
 
   <section class="plant-hero">
-    <div class="hero-container">
-      <div class="hero-text" data-aos="fade-right">
-        <span class="section-tag"><i class="fa-solid fa-leaf"></i> Go Green</span>
-        <h1>Grow Your Own <br>Green Paradise</h1>
-        <p>Whether you have a small balcony or a large garden, we'll help you create your own green space. Discover
-          expert tips, sustainable practices, and join our community.</p>
-        <a href="#tips" class="btn-custom"><i class="fa-solid fa-seedling"></i> Get Started</a>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/components/navbar.css" /> 
-    <link rel="stylesheet" href="../css/components/footer.css" />
-    <link rel="stylesheet" href="../css/pages/plant-care.css" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <div class="hero-text" data-aos="fade-right">
+      <div id="navbar-container"></div>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  </head>
-
-  <body>
-    <div id="navbar-container"></div>
-
-    <section class="plant-hero">
       <div class="hero-container">
-        <div class="hero-text" data-aos="fade-right">
-          <span class="section-tag"><i class="fa-solid fa-leaf"></i> Go Green</span>
-          <h1>Grow Your Own <br>Green Paradise</h1>
-          <p>Whether you have a small balcony or a large garden, we'll help you create your own green space. Discover expert tips, sustainable practices, and join our community.</p>
-          <a href="#tips" class="btn-custom"><i class="fa-solid fa-seedling"></i> Get Started</a>
-        </div>
-        <div class="hero-image-box" data-aos="fade-left">
-          <img src="https://i.pinimg.com/736x/52/7a/cc/527accddb75efd9315c8d6afba2bba1d.jpg" alt="Gardening">
+        <div class="overlay">
+          <div class="hero-text" data-aos="fade-right">
+            <span class="section-tag"><i class="fa-solid fa-leaf"></i> Go Green</span>
+            <h1>Grow Your Own <br>Green Paradise</h1>
+            <p>Whether you have a small balcony or a large garden, we'll help you create your own green space.
+              Discover expert tips, sustainable practices, and join our community.</p>
+            <a href="#tips" class="btn-custom"><i class="fa-solid fa-seedling"></i> Get Started</a>
+          </div>
+          <div class="hero-image-box" data-aos="fade-left">
+            <img src="https://i.pinimg.com/736x/52/7a/cc/527accddb75efd9315c8d6afba2bba1d.jpg" alt="Gardening">
+          </div>
         </div>
       </div>
-      <div class="hero-image-box" data-aos="fade-left">
-        <img src="https://i.pinimg.com/736x/52/7a/cc/527accddb75efd9315c8d6afba2bba1d.jpg" alt="Gardening">
-      </div>
+
     </div>
   </section>
 
@@ -131,17 +124,59 @@
     </div>
   </section>
 
-  <section class="section-padding" style="text-align: center;">
-    <div class="hero-container" style="display: block;">
-      <h2 class="section-title" data-aos="fade-up">Join Our Community Garden</h2>
-      <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-color); opacity: 0.8;" data-aos="fade-up">
-        Connect with fellow nature lovers, share seeds, and grow together. We organize weekly drives to plant trees and
-        maintain urban gardens.
-      </p>
-      <a href="join-garden-drive.html" class="btn-custom" data-aos="fade-up"><i class="fa-solid fa-users"></i> Join
-        Garden Drive</a>
+  <section class="section-padding community-section">
+  <div class="community-wrapper" data-aos="fade-up">
+
+    <span class="section-tag">
+      <i class="fa-solid fa-people-group"></i> Community Initiative
+    </span>
+
+    <h2 class="section-title">Join Our Garden Drive</h2>
+
+    <p class="community-desc">
+      Be part of a growing movement to make cities greener. Volunteer, plant trees,
+      share knowledge, and help create sustainable urban spaces with EcoLife.
+    </p>
+
+    <!-- Highlights -->
+    <div class="community-highlights">
+      <div class="highlight">
+        <i class="fa-solid fa-tree"></i>
+        <span>Tree Plantation Drives</span>
+      </div>
+      <div class="highlight">
+        <i class="fa-solid fa-seedling"></i>
+        <span>Seed Sharing Programs</span>
+      </div>
+      <div class="highlight">
+        <i class="fa-solid fa-handshake-angle"></i>
+        <span>Volunteer with Experts</span>
+      </div>
     </div>
-  </section>
+
+    <!-- Stats -->
+    <div class="community-stats">
+      <div class="stat">
+        <h3>1,200+</h3>
+        <p>Trees Planted</p>
+      </div>
+      <div class="stat">
+        <h3>300+</h3>
+        <p>Active Volunteers</p>
+      </div>
+      <div class="stat">
+        <h3>45+</h3>
+        <p>Garden Drives</p>
+      </div>
+    </div>
+
+    <a href="join-garden-drive.html" class="btn-custom community-btn">
+      <i class="fa-solid fa-users"></i> Join the Drive
+    </a>
+
+  </div>
+</section>
+
 
   <!-- Footer placeholder -->
   <div id="footer-placeholder"></div>
