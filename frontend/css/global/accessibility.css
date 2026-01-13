@@ -132,8 +132,7 @@ input[type="radio"] {
 
 /* Small inline links can be smaller but need adequate padding */
 a:not(.btn):not(.card-btn) {
-    padding: 2px 4px;
-    margin: -2px -4px;
+    padding: 10px 20px;
 }
 
 /* ===== THEME TRANSITION STYLES ===== */

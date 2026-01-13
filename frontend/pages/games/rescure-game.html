@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoLife | Rescue Missions</title>
-    <meta name="description" content="Rescue endangered animals in this interactive mini-game. Protect wildlife and earn badges!">
+    <meta name="description"
+        content="Rescue endangered animals in this interactive mini-game. Protect wildlife and earn badges!">
     <link rel="icon" type="image/png" href="/envirnoment-logo.png">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <link rel="stylesheet" href="../../css/pages/games/rescure-game.css">
 
-  <link rel="stylesheet" href="../../css/components/footer.css" />
-  <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/footer.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
 </head>
 
 <body data-theme="light">
 
     <div id="cursor-container"></div>
-<script src="../../js/components/loadComponents.js"></script>
+    <script src="../../js/components/loadComponents.js"></script>
 
 
-  <div id="navbar-container"></div>
-    
+    <div id="navbar-container"></div>
+
     <!-- Theme Toggle -->
     <div class="theme-toggle">
         <div class="theme-btn" id="themeToggle"></div>
@@ -86,7 +90,7 @@
                 <h3 style="color: var(--accent-green); margin-bottom: 20px; text-align: center;">
                     <i class="fas fa-info-circle"></i> Mission Control
                 </h3>
-                
+
                 <div class="level-progress">
                     <div class="progress-bar">
                         <div class="progress-fill" id="levelProgress"></div>
@@ -227,10 +231,10 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
+
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            
+
             themeToggle.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 themeToggle.style.transform = 'scale(1)';
@@ -332,7 +336,7 @@
             livesElement.textContent = '❤️'.repeat(lives) + '💔'.repeat(3 - lives);
             levelElement.textContent = level;
             rescuedElement.textContent = rescued;
-            
+
             const progress = Math.min((levelScore / levelTarget) * 100, 100);
             levelProgress.style.width = `${progress}%`;
             progressPercent.textContent = `${Math.round(progress)}%`;
@@ -348,7 +352,7 @@
         // Spawn Animal
         function spawnAnimal() {
             if (!gameRunning || gamePaused) return;
-            
+
             const animal = animals[Math.floor(Math.random() * animals.length)];
             const element = document.createElement('div');
             element.className = 'game-element animal';
@@ -356,37 +360,37 @@
             element.style.fontSize = `${40 + Math.random() * 20}px`;
             element.style.left = `${Math.random() * (gameBoard.clientWidth - 80)}px`;
             element.style.top = `${Math.random() * (gameBoard.clientHeight - 80)}px`;
-            
+
             // Add rarity glow
-            switch(animal.rarity) {
+            switch (animal.rarity) {
                 case 'rare': element.style.textShadow = '0 0 10px #2196f3'; break;
                 case 'epic': element.style.textShadow = '0 0 10px #9c27b0'; break;
                 case 'legendary': element.style.textShadow = '0 0 15px #ff9800'; break;
             }
-            
+
             element.addEventListener('click', () => {
                 if (gameRunning && !gamePaused) {
                     // Calculate points with power-up multipliers
                     let points = animal.points;
                     if (activePowerUps.has('doublePoints')) points *= 2;
                     if (activePowerUps.has('triplePoints')) points *= 3;
-                    
+
                     score += points;
                     rescued++;
                     levelScore += points;
-                    
+
                     // Show points popup
                     showPointsPopup(points, element);
-                    
+
                     element.remove();
                     updateStats();
                     checkLevelUp();
                     checkBadges();
                 }
             });
-            
+
             gameBoard.appendChild(element);
-            
+
             // Auto remove after 5-8 seconds
             setTimeout(() => {
                 if (element.parentNode === gameBoard) {
@@ -401,7 +405,7 @@
         // Spawn Threat
         function spawnThreat() {
             if (!gameRunning || gamePaused) return;
-            
+
             const threat = threats[Math.floor(Math.random() * threats.length)];
             const element = document.createElement('div');
             element.className = 'game-element threat';
@@ -409,26 +413,26 @@
             element.style.fontSize = '50px';
             element.style.left = '-100px';
             element.style.top = `${Math.random() * (gameBoard.clientHeight - 80)}px`;
-            
+
             // Animate threat movement
             const speed = 100 + level * 20;
             const distance = gameBoard.clientWidth + 200;
             const duration = distance / speed * 1000;
-            
+
             element.style.animation = `moveThreat ${duration}ms linear forwards`;
-            
+
             // Check collision with animals
             const checkCollision = setInterval(() => {
                 if (!gameRunning || gamePaused) {
                     clearInterval(checkCollision);
                     return;
                 }
-                
+
                 const animals = document.querySelectorAll('.animal');
                 animals.forEach(animal => {
                     const animalRect = animal.getBoundingClientRect();
                     const threatRect = element.getBoundingClientRect();
-                    
+
                     if (isColliding(animalRect, threatRect)) {
                         animal.remove();
                         lives -= threat.damage;
@@ -437,9 +441,9 @@
                     }
                 });
             }, 100);
-            
+
             gameBoard.appendChild(element);
-            
+
             // Auto remove after animation
             setTimeout(() => {
                 if (element.parentNode === gameBoard) {
@@ -452,7 +456,7 @@
         // Spawn Power-up
         function spawnPowerUp() {
             if (!gameRunning || gamePaused || Math.random() > 0.2) return; // 20% chance
-            
+
             const powerUp = powerUps[Math.floor(Math.random() * powerUps.length)];
             const element = document.createElement('div');
             element.className = 'game-element power-up';
@@ -461,16 +465,16 @@
             element.style.left = `${Math.random() * (gameBoard.clientWidth - 60)}px`;
             element.style.top = `${Math.random() * (gameBoard.clientHeight - 60)}px`;
             element.style.textShadow = '0 0 10px #ff9800';
-            
+
             element.addEventListener('click', () => {
                 if (gameRunning && !gamePaused) {
                     activatePowerUp(powerUp);
                     element.remove();
                 }
             });
-            
+
             gameBoard.appendChild(element);
-            
+
             // Auto remove after 8 seconds
             setTimeout(() => {
                 if (element.parentNode === gameBoard) {
@@ -482,13 +486,13 @@
         // Activate Power-up
         function activatePowerUp(powerUp) {
             activePowerUps.add(powerUp.effect);
-            
+
             // Update active power-ups display
             updateActivePowerUps();
-            
+
             // Show notification
             showNotification(`Power-up Activated: ${powerUp.name}`, '#ff9800');
-            
+
             // Remove power-up after duration
             setTimeout(() => {
                 activePowerUps.delete(powerUp.effect);
@@ -517,11 +521,11 @@
                 level++;
                 levelScore = 0;
                 levelTarget = Math.floor(levelTarget * 1.5); // Increase target for next level
-                
+
                 showNotification(`Level ${level} Unlocked!`, '#4caf50');
                 updateStats();
                 updateObjectives();
-                
+
                 // Increase difficulty
                 clearInterval(spawnInterval);
                 clearInterval(threatInterval);
@@ -534,8 +538,8 @@
             badges.forEach((badge, index) => {
                 if (!badge.unlocked) {
                     let unlock = false;
-                    
-                    switch(badge.id) {
+
+                    switch (badge.id) {
                         case 1: unlock = rescued >= 50; break;
                         case 2: unlock = level >= 5; break;
                         case 3: unlock = score >= 5000; break;
@@ -543,7 +547,7 @@
                         case 5: unlock = true; // This would need timing tracking
                         case 6: unlock = level >= 10; break;
                     }
-                    
+
                     if (unlock) {
                         badges[index].unlocked = true;
                         showNotification(`Badge Unlocked: ${badge.name} ${badge.emoji}`, '#ff9800');
@@ -566,27 +570,27 @@
             clearInterval(spawnInterval);
             clearInterval(threatInterval);
             clearInterval(powerUpInterval);
-            
+
             // Clear game board
             gameBoard.innerHTML = '';
-            
+
             // Show game over modal
             finalScoreElement.textContent = score;
             finalRescuedElement.textContent = rescued;
-            
+
             if (completed) {
                 finalMessageElement.textContent = 'Congratulations! You completed all levels!';
             } else {
                 finalMessageElement.textContent = 'Mission Failed! Try again to save more animals!';
             }
-            
+
             gameOverModal.classList.add('active');
         }
 
         // Start Game
         function startGame() {
             if (gameRunning) return;
-            
+
             // Reset game state
             score = 0;
             lives = 3;
@@ -597,18 +601,18 @@
             activePowerUps.clear();
             gameRunning = true;
             gamePaused = false;
-            
+
             // Clear game board
             gameBoard.innerHTML = '';
-            
+
             // Update UI
             updateStats();
             updateActivePowerUps();
             updateObjectives();
-            
+
             // Start spawning
             startSpawning();
-            
+
             showNotification('Mission Started! Save the animals!', '#2e7d32');
         }
 
@@ -616,10 +620,10 @@
         function startSpawning() {
             // Spawn animals every 1-2 seconds
             spawnInterval = setInterval(spawnAnimal, 1000 - (level * 100));
-            
+
             // Spawn threats every 2-3 seconds
             threatInterval = setInterval(spawnThreat, 2000 - (level * 150));
-            
+
             // Spawn power-ups every 8-12 seconds
             powerUpInterval = setInterval(spawnPowerUp, 8000);
         }
@@ -631,7 +635,7 @@
                 <i class="fas fa-${gamePaused ? 'play' : 'pause'}"></i>
                 ${gamePaused ? 'Resume' : 'Pause'} Game
             `;
-            
+
             if (gamePaused) {
                 showNotification('Game Paused', '#ff9800');
             } else {
@@ -641,10 +645,10 @@
 
         // Helper Functions
         function isColliding(rect1, rect2) {
-            return !(rect1.right < rect2.left || 
-                    rect1.left > rect2.right || 
-                    rect1.bottom < rect2.top || 
-                    rect1.top > rect2.bottom);
+            return !(rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom);
         }
 
         function showPointsPopup(points, element) {
@@ -656,15 +660,15 @@
             popup.style.fontSize = '20px';
             popup.style.pointerEvents = 'none';
             popup.style.zIndex = '100';
-            
+
             const rect = element.getBoundingClientRect();
             const boardRect = gameBoard.getBoundingClientRect();
-            
-            popup.style.left = `${rect.left - boardRect.left + rect.width/2}px`;
+
+            popup.style.left = `${rect.left - boardRect.left + rect.width / 2}px`;
             popup.style.top = `${rect.top - boardRect.top}px`;
-            
+
             gameBoard.appendChild(popup);
-            
+
             // Animate popup
             let opacity = 1;
             let top = rect.top - boardRect.top;
@@ -673,7 +677,7 @@
                 top -= 2;
                 popup.style.opacity = opacity;
                 popup.style.top = `${top}px`;
-                
+
                 if (opacity > 0) {
                     requestAnimationFrame(animate);
                 } else {
@@ -697,14 +701,14 @@
             notification.style.zIndex = '1000';
             notification.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
             notification.style.fontWeight = '600';
-            
+
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.style.opacity = '0';
                 notification.style.transform = 'translateX(-50%) translateY(-20px)';
                 notification.style.transition = 'all 0.5s ease';
-                
+
                 setTimeout(() => {
                     notification.remove();
                 }, 500);
@@ -731,12 +735,16 @@
         initGame();
         console.log('Wildlife Rescue Game initialized with enhanced mechanics!');
     </script>
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-<!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
-<script src="../../js/components/footer-loader.js"></script>
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "ws110ZzXAkEnbVsIy9g8d"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+    <script src="/frontend/js/components/footer-loader.js"></script>
+
+
+
     <script src="../../js/components/navbar-loader.js"></script>
 </body>
+
 </html>
