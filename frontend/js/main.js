@@ -1242,24 +1242,28 @@ function initSurvivalScore() {
 
 /* ===== THEME TOGGLE ===== */
 function initThemeToggle() {
+  if (typeof window.initThemeToggle === 'function') {
+    window.initThemeToggle();
+    return;
+  }
+  
+  // Minimal fallback if global theme-toggle.js is not loaded
   const toggle = document.getElementById("themeToggle");
   if (!toggle) return;
   
   const icon = toggle.querySelector("i");
-
-  // Load saved theme
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-theme");
-    icon.classList.replace("fa-moon", "fa-sun");
+    if (icon) icon.classList.replace("fa-moon", "fa-sun");
   }
 
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme");
-
     const isDark = document.body.classList.contains("dark-theme");
-    icon.classList.toggle("fa-moon", !isDark);
-    icon.classList.toggle("fa-sun", isDark);
-
+    if (icon) {
+      icon.classList.toggle("fa-moon", !isDark);
+      icon.classList.toggle("fa-sun", isDark);
+    }
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 }
