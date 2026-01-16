@@ -6,6 +6,12 @@
       <span>EcoLife</span>
     </a>
 
+    <!-- Live Clock Display -->
+    <div class="live-clock" id="live-clock">
+      <i class="fas fa-clock"></i>
+      <span id="clock-time">00:00:00</span>
+    </div>
+
     <div class="nav-toggle" id="navToggle">
       <span></span>
       <span></span>
@@ -45,18 +51,18 @@
       <li class="nav-group"><a href="pages/contact.html" class="nav-link">Contact</a></li>
 
       <li class="nav-auth">
-    <div class="theme-toggle-btn" id="themeToggle">
-      <i class="fa-solid fa-moon"></i>
-    </div>
+        <div class="theme-toggle-btn" id="themeToggle">
+          <i class="fa-solid fa-moon"></i>
+        </div>
 
-    <div class="auth-guest-only">
-      <a href="pages/Login.html" class="btn-login">Login</a>
-      <a href="pages/Signup.html" class="btn-signup">Sign Up</a>
-    </div>
-    
-    <div class="nav-profile auth-user-only" style="display: none;">
-      </div>
-  </li>
+        <div class="auth-guest-only">
+          <a href="pages/Login.html" class="btn-login">Login</a>
+          <a href="pages/Signup.html" class="btn-signup">Sign Up</a>
+        </div>
+
+        <div class="nav-profile auth-user-only" style="display: none;">
+        </div>
+      </li>
 
     </ul>
 
@@ -64,21 +70,21 @@
 </nav>
 <script>
   // Navbar Scroll Effect
-window.addEventListener("scroll", function() {
+  window.addEventListener("scroll", function () {
     const navbar = document.getElementById("navbar");
     if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
+      navbar.classList.add("scrolled");
     } else {
-        navbar.classList.remove("scrolled");
+      navbar.classList.remove("scrolled");
     }
-});
+  });
 
-// Mobile Menu Toggle
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+  // Mobile Menu Toggle
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
 
-navToggle.addEventListener("click", () => {
+  navToggle.addEventListener("click", () => {
     navLinks.classList.toggle("active");
     navToggle.classList.toggle("active");
-});
+  });
 </script>
