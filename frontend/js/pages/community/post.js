@@ -54,6 +54,17 @@ function loadPost(count = 3) {
         <span class="comments-count">${post.comments}</span> comments
       </div>
 
+      <div class="emoji-reactions">
+        <div class="emoji-reaction" data-emoji="thumbsup">
+          <span class="emoji-icon">👍</span>
+          <span class="emoji-count">0</span>
+        </div>
+        <div class="emoji-reaction" data-emoji="thumbsdown">
+          <span class="emoji-icon">👎</span>
+          <span class="emoji-count">0</span>
+        </div>
+      </div>
+
       <div class="comment-panel column" style="display:none;">
         <div class="comments-list column"></div>
         <input class="input comment-input" type="text" placeholder="Write a comment...">
@@ -80,7 +91,7 @@ function loadPost(count = 3) {
     // Like
     likeBtn.addEventListener("click", () => {
       likeBtn.classList.toggle("active");
-      likeBtn.classList.contains("active") 
+      likeBtn.classList.contains("active")
         ? likeBtn.classList.replace("fa-regular", "fa-solid")
         : likeBtn.classList.replace("fa-solid", "fa-regular");
 
@@ -106,7 +117,7 @@ function loadPost(count = 3) {
     // Add comment
     addCommentBtn.addEventListener("click", () => {
       const text = commentInput.value.trim();
-      if(text !== "") {
+      if (text !== "") {
         const commentEl = document.createElement("div");
         commentEl.classList.add("comment-item");
         commentEl.textContent = text;
@@ -120,6 +131,26 @@ function loadPost(count = 3) {
         commentInput.value = "";
         updateNoCommentText();
       }
+    });
+
+    // Emoji Reactions
+    const emojiReactions = postCard.querySelectorAll(".emoji-reaction");
+    emojiReactions.forEach(reaction => {
+      reaction.addEventListener("click", () => {
+        const emojiCount = reaction.querySelector(".emoji-count");
+        let count = parseInt(emojiCount.textContent);
+
+        // Toggle reaction - if already clicked, decrease count, else increase
+        if (reaction.classList.contains("active")) {
+          count = Math.max(0, count - 1);
+          reaction.classList.remove("active");
+        } else {
+          count += 1;
+          reaction.classList.add("active");
+        }
+
+        emojiCount.textContent = count;
+      });
     });
 
     function updateNoCommentText() {
@@ -156,7 +187,7 @@ closeModal.addEventListener("click", () => {
 });
 
 window.addEventListener("click", (e) => {
-  if(e.target === modal){
+  if (e.target === modal) {
     modal.style.display = "none";
   }
 });
@@ -166,7 +197,7 @@ submitPostBtn.addEventListener("click", () => {
   const desc = postDescInput.value.trim();
   const imageFile = postImageInput.files[0];
 
-  if(!desc && !imageFile) return alert("Add description or image");
+  if (!desc && !imageFile) return alert("Add description or image");
 
   const postCard = document.createElement("div");
   postCard.className = "post-card";
@@ -190,6 +221,16 @@ submitPostBtn.addEventListener("click", () => {
       <span class="likes-count">0</span> likes • 
       <span class="comments-count">0</span> comments
     </div>
+    <div class="emoji-reactions">
+      <div class="emoji-reaction" data-emoji="thumbsup">
+        <span class="emoji-icon">👍</span>
+        <span class="emoji-count">0</span>
+      </div>
+      <div class="emoji-reaction" data-emoji="thumbsdown">
+        <span class="emoji-icon">👎</span>
+        <span class="emoji-count">0</span>
+      </div>
+    </div>
     <div class="comment-panel column" style="display:none;">
       <div class="comments-list column"></div>
       <input class="input comment-input" type="text" placeholder="Write a comment...">
@@ -210,7 +251,7 @@ submitPostBtn.addEventListener("click", () => {
 });
 
 // Function to attach likes/comments/save listeners
-function attachPostListeners(postCard){
+function attachPostListeners(postCard) {
   const likeBtn = postCard.querySelector(".like-btn");
   const saveBtn = postCard.querySelector(".save-btn");
   const commentBtn = postCard.querySelector(".comment-btn");
@@ -246,7 +287,7 @@ function attachPostListeners(postCard){
   // Add comment
   addCommentBtn.addEventListener("click", () => {
     const text = commentInput.value.trim();
-    if(text !== ""){
+    if (text !== "") {
       const commentEl = document.createElement("div");
       commentEl.classList.add("comment-item");
       commentEl.textContent = text;
@@ -259,5 +300,25 @@ function attachPostListeners(postCard){
       commentInput.value = "";
       noComment.style.display = "none";
     }
+  });
+
+  // Emoji Reactions
+  const emojiReactions = postCard.querySelectorAll(".emoji-reaction");
+  emojiReactions.forEach(reaction => {
+    reaction.addEventListener("click", () => {
+      const emojiCount = reaction.querySelector(".emoji-count");
+      let count = parseInt(emojiCount.textContent);
+
+      // Toggle reaction - if already clicked, decrease count, else increase
+      if (reaction.classList.contains("active")) {
+        count = Math.max(0, count - 1);
+        reaction.classList.remove("active");
+      } else {
+        count += 1;
+        reaction.classList.add("active");
+      }
+
+      emojiCount.textContent = count;
+    });
   });
 }
