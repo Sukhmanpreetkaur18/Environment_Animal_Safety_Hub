@@ -11,7 +11,31 @@
  * @author EcoLife Development Team
  * @version 1.0.0
  */
+/**
+ * Setup form submission handler with confirmation modal
+ */
+function setupFormSubmission() {
+    const signupForm = document.getElementById("signupForm");
+    if (!signupForm) return;
 
+    signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Validate all steps
+        for (let i = 1; i <= 4; i++) {
+            if (!validateStep(i)) {
+                changeStep(i - currentStep + 1);
+                return;
+            }
+        }
+
+        // Update confirmation modal with form data
+        updateConfirmationModal();
+
+        // Show confirmation modal
+        showConfirmationModal();
+    });
+}
 // Current Step
 let currentStep = 1;
 const totalSteps = 4;
