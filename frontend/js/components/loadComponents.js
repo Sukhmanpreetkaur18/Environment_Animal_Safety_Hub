@@ -1,25 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("cursor-container");
-  if (!container) return;
+/**
+ * Component Loader shim
+ * Now redirects to component-loader.js
+ */
 
-  fetch("/frontend/components/cursor.html")
-    .then(res => res.text())
-    .then(html => {
-      container.innerHTML = html;
+(function() {
+    console.warn("loadComponents.js is deprecated. Please use component-loader.js instead.");
+    if (!document.querySelector('script[src*="component-loader.js"]')) {
+        const script = document.createElement('script');
+        let prefix = window.location.pathname.includes('/pages/') ? (window.location.pathname.split('pages')[1].split('/').length > 2 ? '../../' : '../') : '';
+        script.src = prefix + 'js/components/component-loader.js';
+        document.head.appendChild(script);
+    }
+})();
 
-      // 🔥 Execute scripts inside cursor.html
-      container.querySelectorAll("script").forEach(oldScript => {
-        const newScript = document.createElement("script");
-
-        if (oldScript.src) {
-          newScript.src = oldScript.src;
-        } else {
-          newScript.textContent = oldScript.textContent;
-        }
-
-        document.body.appendChild(newScript);
-        oldScript.remove();
-      });
-    })
-    .catch(err => console.error("Cursor load failed:", err));
-});

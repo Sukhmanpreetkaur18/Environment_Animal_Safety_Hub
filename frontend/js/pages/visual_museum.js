@@ -262,12 +262,18 @@ filterBtns.forEach(btn => {
 
 // Animal Details Modal with real API data
 async function showAnimalDetails(animal) {
+    // Store the currently focused element
+    const previouslyFocused = document.activeElement;
+    
     // Show loading state
     const modal = document.createElement('div');
     modal.className = 'animal-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'animal-title');
     modal.innerHTML = `
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" aria-label="Close modal">&times;</span>
             <div class="loading-state">
                 <div class="spinner"></div>
                 <p>Loading ${animal.name} details...</p>
@@ -277,10 +283,29 @@ async function showAnimalDetails(animal) {
     
     document.body.appendChild(modal);
     
+    // Focus management
+    modal.focus();
+    
     // Close events
     const closeBtn = modal.querySelector('.close-btn');
-    closeBtn.onclick = () => modal.remove();
-    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+    closeBtn.onclick = () => {
+        modal.remove();
+        previouslyFocused.focus();
+    };
+    modal.onclick = (e) => { 
+        if (e.target === modal) {
+            modal.remove();
+            previouslyFocused.focus();
+        }
+    };
+    
+    // Keyboard navigation
+    modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modal.remove();
+            previouslyFocused.focus();
+        }
+    });
     
     try {
         // Fetch detailed data
@@ -288,10 +313,10 @@ async function showAnimalDetails(animal) {
         
         // Update modal with real data
         modal.querySelector('.modal-content').innerHTML = `
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" aria-label="Close modal">&times;</span>
             <div class="animal-header">
                 <img src="${detailedAnimal.img}" alt="${detailedAnimal.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(detailedAnimal.name)}'">
-                <div class="animal-title">
+                <div class="animal-title" id="animal-title">
                     <h2>${detailedAnimal.name}</h2>
                     <p class="scientific">${detailedAnimal.scientific}</p>
                     <div class="status-badge status-${detailedAnimal.status}">
@@ -327,16 +352,23 @@ async function showAnimalDetails(animal) {
         `;
         
         // Re-attach close events
-        modal.querySelector('.close-btn').onclick = () => modal.remove();
+        modal.querySelector('.close-btn').onclick = () => {
+            modal.remove();
+            previouslyFocused.focus();
+        };
         
     } catch (error) {
         modal.querySelector('.modal-content').innerHTML = `
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" aria-label="Close modal">&times;</span>
             <div class="error-state">
                 <p>Error loading details for ${animal.name}</p>
                 <button onclick="this.closest('.animal-modal').remove()">Close</button>
             </div>
         `;
+        modal.querySelector('.close-btn').onclick = () => {
+            modal.remove();
+            previouslyFocused.focus();
+        };
     }
 }
 

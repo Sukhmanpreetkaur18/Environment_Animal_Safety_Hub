@@ -287,4 +287,7 @@
         DARK: THEME_DARK
     };
 
+    // Make initThemeToggle globally accessible
+    window.initThemeToggle = initThemeToggle;
+
 })();
