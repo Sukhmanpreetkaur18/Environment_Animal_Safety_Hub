@@ -54,10 +54,72 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "quizName": "Kids Eco Quiz",
+      "questions": [
+        {
+          "question": "What helps reduce pollution?",
+          "options": ["Planting trees 🌳", "Burning waste 🔥", "Cutting forests 🪓", "Throwing trash 🗑️"],
+          "answer": 0
+        },
+        {
+          "question": "Which energy is renewable?",
+          "options": ["Coal ⚫", "Solar ☀️", "Oil 🛢️", "Gas 💨"],
+          "answer": 1
+        },
+        {
+          "question": "Why recycle waste?",
+          "options": ["Increase trash 🚮", "Save resources ♻️", "Pollute water 💧", "Waste money 💸"],
+          "answer": 1
+        },
+        {
+          "question": "Which animal is endangered?",
+          "options": ["Dog 🐕", "Cat 🐈", "Tiger 🐅", "Cow 🐄"],
+          "answer": 2
+        },
+        {
+          "question": "Best way to save water?",
+          "options": ["Leave taps open 🚰", "Fix leaks 🔧", "Waste water 🚿", "Ignore 🤷"],
+          "answer": 1
+        },
+        {
+          "question": "What gas causes global warming?",
+          "options": ["Oxygen 🌬️", "Carbon dioxide 🌫️", "Nitrogen ⚗️", "Hydrogen 🎈"],
+          "answer": 1
+        },
+        {
+          "question": "What protects wildlife?",
+          "options": ["Deforestation 🪵", "Conservation 🏞️", "Hunting 🔫", "Pollution 🏭"],
+          "answer": 1
+        },
+        {
+          "question": "Which bin for plastic?",
+          "options": ["Green 🟢", "Blue 🔵", "Red 🔴", "Black ⚫"],
+          "answer": 1
+        },
+        {
+          "question": "What harms oceans?",
+          "options": ["Clean water 🌊", "Plastic waste 🥤", "Fish 🐟", "Coral 🪸"],
+          "answer": 1
+        },
+        {
+          "question": "Best transport to reduce pollution?",
+          "options": ["Car 🚗", "Bus 🚌", "Cycle 🚲", "Plane ✈️"],
+          "answer": 2
+        }
+      ]
     }
   ],
   "userProgress": {
     "Animal First Aid Quiz": {
+      "currentIndex": 0,
+      "answers": [],
+      "score": 0,
+      "remainingTime": 0,
+      "timestamp": null
+    },
+    "Kids Eco Quiz": {
       "currentIndex": 0,
       "answers": [],
       "score": 0,

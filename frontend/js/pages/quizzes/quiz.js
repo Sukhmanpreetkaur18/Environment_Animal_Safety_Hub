@@ -1,15 +1,21 @@
-const questions = [
-    { q: "What helps reduce pollution?", o: ["Planting trees 🌳", "Burning waste 🔥", "Cutting forests 🪓", "Throwing trash 🗑️"], a: 0 },
-    { q: "Which energy is renewable?", o: ["Coal ⚫", "Solar ☀️", "Oil 🛢️", "Gas 💨"], a: 1 },
-    { q: "Why recycle waste?", o: ["Increase trash 🚮", "Save resources ♻️", "Pollute water 💧", "Waste money 💸"], a: 1 },
-    { q: "Which animal is endangered?", o: ["Dog 🐕", "Cat 🐈", "Tiger 🐅", "Cow 🐄"], a: 2 },
-    { q: "Best way to save water?", o: ["Leave taps open 🚰", "Fix leaks 🔧", "Waste water 🚿", "Ignore 🤷"], a: 1 },
-    { q: "What gas causes global warming?", o: ["Oxygen 🌬️", "Carbon dioxide 🌫️", "Nitrogen ⚗️", "Hydrogen 🎈"], a: 1 },
-    { q: "What protects wildlife?", o: ["Deforestation 🪵", "Conservation 🏞️", "Hunting 🔫", "Pollution 🏭"], a: 1 },
-    { q: "Which bin for plastic?", o: ["Green 🟢", "Blue 🔵", "Red 🔴", "Black ⚫"], a: 1 },
-    { q: "What harms oceans?", o: ["Clean water 🌊", "Plastic waste 🥤", "Fish 🐟", "Coral 🪸"], a: 1 },
-    { q: "Best transport to reduce pollution?", o: ["Car 🚗", "Bus 🚌", "Cycle 🚲", "Plane ✈️"], a: 2 }
-];
+// Load quiz data from JSON
+let quizData = null;
+let questions = [];
+
+async function loadQuizData() {
+    try {
+        const response = await fetch('../../assets/data/quiz-data.json');
+        quizData = await response.json();
+        const quiz = quizData.quizzes.find(q => q.quizName === quizName);
+        if (quiz) {
+            questions = quiz.questions.map(q => ({ q: q.question, o: q.options, a: q.answer }));
+        } else {
+            console.error('Quiz not found in data');
+        }
+    } catch (error) {
+        console.error('Error loading quiz data:', error);
+    }
+}
 
 // Floating Background Logic
 function createFloatingElements() {
@@ -91,17 +97,22 @@ const questionEl = document.getElementById('question');
 const optionsEl = document.getElementById('options');
 
 // Initialize
-createFloatingElements();
+async function init() {
+    await loadQuizData();
+    createFloatingElements();
 
-// Check for existing progress on page load
-if (loadProgress()) {
-    const resumeBtn = document.createElement('button');
-    resumeBtn.className = 'btn-secondary';
-    resumeBtn.textContent = 'Resume Quiz ⏯️';
-    resumeBtn.onclick = resumeQuiz;
-    resumeBtn.style.marginTop = '10px';
-    startScreen.appendChild(resumeBtn);
+    // Check for existing progress on page load
+    if (loadProgress()) {
+        const resumeBtn = document.createElement('button');
+        resumeBtn.className = 'btn-secondary';
+        resumeBtn.textContent = 'Resume Quiz ⏯️';
+        resumeBtn.onclick = resumeQuiz;
+        resumeBtn.style.marginTop = '10px';
+        startScreen.appendChild(resumeBtn);
+    }
 }
+
+init();
 
 function startQuiz() {
     const timeSelect = document.getElementById('timeSelect');
