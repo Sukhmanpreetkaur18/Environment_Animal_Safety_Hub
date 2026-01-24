@@ -23,8 +23,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // API Routes with validation
 const { validate } = require('./backend/middleware/validation');
-const { rateLimits } = require('./backend/middleware/security');
-
 app.use('/api/quiz', require('./backend/routes/quiz'));
 app.use('/api/animals', require('./backend/routes/animals'));
 app.use('/api/users', require('./backend/routes/users'));
