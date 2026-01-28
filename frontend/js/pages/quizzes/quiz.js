@@ -7,6 +7,60 @@ let quizData = null;
  */
 let questions = [];
 
+// Fallback questions in case JSON loading fails
+const FALLBACK_QUESTIONS = [
+  {
+    q: "What helps reduce pollution?",
+    o: ["Planting trees 🌳", "Burning waste 🔥", "Cutting forests 🪓", "Throwing trash 🗑️"],
+    a: 0
+  },
+  {
+    q: "Which energy is renewable?",
+    o: ["Coal ⛽", "Solar ☀️", "Oil 🚢", "Gas 💨"],
+    a: 1
+  },
+  {
+    q: "Why recycle waste?",
+    o: ["Increase trash 🚯", "Save resources ♻️", "Pollute water 💧", "Waste money 💸"],
+    a: 1
+  },
+  {
+    q: "Which animal is endangered?",
+    o: ["Dog 🐕", "Cat 🐈", "Tiger 🐅", "Cow 🐄"],
+    a: 2
+  },
+  {
+    q: "Best way to save water?",
+    o: ["Leave taps open 🚰", "Fix leaks 🔧", "Waste water 🚿", "Ignore 🙄"],
+    a: 1
+  },
+  {
+    q: "What gas causes global warming?",
+    o: ["Oxygen 🌬️", "Carbon dioxide 🌫️", "Nitrogen ✗", "Hydrogen 🎈"],
+    a: 1
+  },
+  {
+    q: "What protects wildlife?",
+    o: ["Deforestation 🪵", "Conservation 🏞️", "Hunting 🔫", "Pollution 🏭"],
+    a: 1
+  },
+  {
+    q: "Which bin for plastic?",
+    o: ["Green 🟢", "Blue 🔵", "Red 🔴", "Black ⛑️"],
+    a: 1
+  },
+  {
+    q: "What harms oceans?",
+    o: ["Clean water 🌊", "Plastic waste 🗃️", "Fish 🐟", "Coral 🪸"],
+    a: 1
+  },
+  {
+    q: "Best transport to reduce pollution?",
+    o: ["Car 🚗", "Bus 🚌", "Cycle 🚲", "Plane ✈️"],
+    a: 2
+  }
+];
+
 /**
  * Load questions from the quiz data JSON file
  */
@@ -18,114 +72,12 @@ async function loadQuizData() {
       questions = data.quizzes[0].questions; // Load questions from first quiz
     } else {
       // Fallback to hardcoded questions if JSON fails
-      questions = [
-        {
-          q: "What helps reduce pollution?",
-          o: ["Planting trees 🌳", "Burning waste 🔥", "Cutting forests 🪓", "Throwing trash 🗑️"],
-          a: 0
-        },
-        {
-          q: "Which energy is renewable?",
-          o: ["Coal ⛽", "Solar ☀️", "Oil 🚢", "Gas 💨"],
-          a: 1
-        },
-        {
-          q: "Why recycle waste?",
-          o: ["Increase trash 🚯", "Save resources ♻️", "Pollute water 💧", "Waste money 💸"],
-          a: 1
-        },
-        {
-          q: "Which animal is endangered?",
-          o: ["Dog 🐕", "Cat 🐈", "Tiger 🐅", "Cow 🐄"],
-          a: 2
-        },
-        {
-          q: "Best way to save water?",
-          o: ["Leave taps open 🚰", "Fix leaks 🔧", "Waste water 🚿", "Ignore 🙄"],
-          a: 1
-        },
-        {
-          q: "What gas causes global warming?",
-          o: ["Oxygen 🌬️", "Carbon dioxide 🌫️", "Nitrogen ✗", "Hydrogen 🎈"],
-          a: 1
-        },
-        {
-          q: "What protects wildlife?",
-          o: ["Deforestation 🪵", "Conservation 🏞️", "Hunting 🔫", "Pollution 🏭"],
-          a: 1
-        },
-        {
-          q: "Which bin for plastic?",
-          o: ["Green 🟢", "Blue 🔵", "Red 🔴", "Black ⛑️"],
-          a: 1
-        },
-        {
-          q: "What harms oceans?",
-          o: ["Clean water 🌊", "Plastic waste 🗃️", "Fish 🐟", "Coral 🪸"],
-          a: 1
-        },
-        {
-          q: "Best transport to reduce pollution?",
-          o: ["Car 🚗", "Bus 🚌", "Cycle 🚲", "Plane ✈️"],
-          a: 2
-        }
-      ];
+      questions = FALLBACK_QUESTIONS;
     }
   } catch (error) {
     console.error('Failed to load quiz data:', error);
     // Fallback to hardcoded questions
-    questions = [
-      {
-        q: "What helps reduce pollution?",
-        o: ["Planting trees 🌳", "Burning waste 🔥", "Cutting forests 🪓", "Throwing trash 🗑️"],
-        a: 0
-      },
-      {
-        q: "Which energy is renewable?",
-        o: ["Coal ⛽", "Solar ☀️", "Oil 🚢", "Gas 💨"],
-        a: 1
-      },
-      {
-        q: "Why recycle waste?",
-        o: ["Increase trash 🚯", "Save resources ♻️", "Pollute water 💧", "Waste money 💸"],
-        a: 1
-      },
-      {
-        q: "Which animal is endangered?",
-        o: ["Dog 🐕", "Cat 🐈", "Tiger 🐅", "Cow 🐄"],
-        a: 2
-      },
-      {
-        q: "Best way to save water?",
-        o: ["Leave taps open 🚰", "Fix leaks 🔧", "Waste water 🚿", "Ignore 🙄"],
-        a: 1
-      },
-      {
-        q: "What gas causes global warming?",
-        o: ["Oxygen 🌬️", "Carbon dioxide 🌫️", "Nitrogen ✗", "Hydrogen 🎈"],
-        a: 1
-      },
-      {
-        q: "What protects wildlife?",
-        o: ["Deforestation 🪵", "Conservation 🏞️", "Hunting 🔫", "Pollution 🏭"],
-        a: 1
-      },
-      {
-        q: "Which bin for plastic?",
-        o: ["Green 🟢", "Blue 🔵", "Red 🔴", "Black ⛑️"],
-        a: 1
-      },
-      {
-        q: "What harms oceans?",
-        o: ["Clean water 🌊", "Plastic waste 🗃️", "Fish 🐟", "Coral 🪸"],
-        a: 1
-      },
-      {
-        q: "Best transport to reduce pollution?",
-        o: ["Car 🚗", "Bus 🚌", "Cycle 🚲", "Plane ✈️"],
-        a: 2
-      }
-    ];
+    questions = FALLBACK_QUESTIONS;
   }
 }
 
