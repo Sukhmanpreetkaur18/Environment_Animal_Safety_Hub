@@ -297,6 +297,7 @@ function initAdditionalFeatures() {
 
   // Crisis alert systems
   initNoiseCrisisAlert();
+  initIndigenousCrisisAlert();
 }
 
 // ===========================================
@@ -1601,11 +1602,103 @@ class NoiseCrisisAlertManager {
   }
 }
 
+// INDIGENOUS KNOWLEDGE LOSS CRISIS ALERT SYSTEM
+/**
+ * Indigenous Knowledge Loss Crisis Alert Management
+ * Handles the display and dismissal of Level 3 indigenous knowledge crisis alerts
+ */
+class IndigenousCrisisAlertManager {
+  constructor() {
+    this.alertBanner = document.getElementById('indigenous-crisis-alert-banner');
+    this.isDismissed = this.getDismissedState();
+
+    // Show alert if not dismissed and conditions are met
+    if (!this.isDismissed && this.shouldShowAlert()) {
+      this.showAlert();
+    }
+  }
+
+  shouldShowAlert() {
+    // Always show for Level 3 crisis (can add more complex logic later)
+    return true;
+  }
+
+  showAlert() {
+    if (this.alertBanner) {
+      // Add slide-in animation
+      this.alertBanner.style.display = 'block';
+      this.alertBanner.style.transform = 'translateY(-100%)';
+      this.alertBanner.style.transition = 'transform 0.5s ease-out';
+
+      // Trigger animation
+      setTimeout(() => {
+        this.alertBanner.style.transform = 'translateY(0)';
+      }, 100);
+
+      // Add body class for layout adjustments
+      document.body.classList.add('indigenous-crisis-alert-shown');
+
+      // Announce to screen readers
+      this.announceToScreenReader('Level 3 Emergency: Indigenous ecological knowledge loss crisis. Traditional conservation practices are disappearing, threatening biodiversity and ecosystem resilience.');
+    }
+  }
+
+  dismissAlert() {
+    if (this.alertBanner) {
+      // Add closing animation
+      this.alertBanner.classList.add('closing');
+      this.alertBanner.style.transform = 'translateY(-100%)';
+
+      // Remove body class
+      document.body.classList.remove('indigenous-crisis-alert-shown');
+
+      // Store dismissal state
+      this.setDismissedState(true);
+
+      // Remove the banner after animation completes
+      setTimeout(() => {
+        this.alertBanner.style.display = 'none';
+        this.alertBanner.classList.remove('closing');
+      }, 500);
+    }
+  }
+
+  getDismissedState() {
+    return localStorage.getItem('indigenousCrisisAlertDismissed') === 'true';
+  }
+
+  setDismissedState(dismissed) {
+    localStorage.setItem('indigenousCrisisAlertDismissed', dismissed.toString());
+  }
+
+  announceToScreenReader(message) {
+    const liveRegion = document.getElementById('status-messages');
+    if (liveRegion) {
+      liveRegion.textContent = message;
+    }
+  }
+}
+
+// Global function for close button
+function closeIndigenousCrisisAlert() {
+  if (window.indigenousCrisisManager) {
+    window.indigenousCrisisManager.dismissAlert();
+  }
+}
+
 // Global function for close button
 function closeNoiseCrisisAlert() {
   if (window.noiseCrisisManager) {
     window.noiseCrisisManager.dismissAlert();
   }
+}
+
+/**
+ * Initialize indigenous knowledge loss crisis alert system
+ */
+function initIndigenousCrisisAlert() {
+  // Initialize the crisis alert manager
+  window.indigenousCrisisManager = new IndigenousCrisisAlertManager();
 }
 
 // ===========================================

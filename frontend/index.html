@@ -78,6 +78,7 @@
   <link rel="stylesheet" href="css/components/interactive-elements.css" />
   <link rel="stylesheet" href="css/components/donation.css" />
   <link rel="stylesheet" href="css/components/noise-crisis-alert.css" />
+  <link rel="stylesheet" href="css/components/indigenous-crisis-alert.css" />
   <!-- Accessibility Styles -->
   <link rel="stylesheet" href="css/global/accessibility.css" />
   <!-- Google Fonts - Optimized -->
@@ -279,6 +280,27 @@
           <i class="fas fa-arrow-right"></i>
         </a>
         <button class="noise-crisis-close" onclick="closeNoiseCrisisAlert()" aria-label="Close crisis alert">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indigenous Knowledge Loss Crisis Alert Banner - Level 3 Emergency -->
+  <div id="indigenous-crisis-alert-banner" class="indigenous-crisis-alert-banner" style="display: none;">
+    <div class="indigenous-crisis-alert-content">
+      <div class="indigenous-crisis-icon">
+        <i class="fas fa-brain"></i>
+      </div>
+      <div class="indigenous-crisis-text">
+        <div class="indigenous-crisis-title">LEVEL 3 EMERGENCY</div>
+        <div class="indigenous-crisis-message">Indigenous Ecological Knowledge Loss Crisis</div>
+      </div>
+      <div class="indigenous-crisis-actions">
+        <a href="./pages/indigenous-knowledge-loss.html" class="indigenous-crisis-btn">
+          <i class="fas fa-eye"></i> View Crisis Details
+        </a>
+        <button class="indigenous-crisis-dismiss" onclick="closeIndigenousCrisisAlert()" aria-label="Close crisis alert">
           <i class="fas fa-times"></i>
         </button>
       </div>
