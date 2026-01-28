@@ -77,6 +77,7 @@
   <!-- Interactive Elements -->
   <link rel="stylesheet" href="css/components/interactive-elements.css" />
   <link rel="stylesheet" href="css/components/donation.css" />
+  <link rel="stylesheet" href="css/components/noise-crisis-alert.css" />
   <!-- Accessibility Styles -->
   <link rel="stylesheet" href="css/global/accessibility.css" />
   <!-- Google Fonts - Optimized -->
@@ -259,6 +260,30 @@
 
 
 <body class="crisis-alert-shown">
+
+  <!-- Noise Pollution Crisis Alert Banner - Level 3 Emergency -->
+  <div id="noise-crisis-alert-banner" class="noise-crisis-alert-banner" style="display: none;">
+    <div class="noise-crisis-alert-content">
+      <div class="noise-crisis-icon">
+        <i class="fas fa-volume-up noise-pulse"></i>
+      </div>
+      <div class="noise-crisis-text">
+        <div class="noise-crisis-level">LEVEL 3 EMERGENCY</div>
+        <div class="noise-crisis-title">Shipping Noise Pollution Crisis</div>
+        <div class="noise-crisis-action">Marine mammals face critical communication disruption</div>
+      </div>
+      <div class="noise-crisis-actions">
+        <a href="./pages/noise-pollution-shipping.html" class="noise-crisis-btn">
+          <span class="noise-emergency-dot"></span>
+          View Crisis Details
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <button class="noise-crisis-close" onclick="closeNoiseCrisisAlert()" aria-label="Close crisis alert">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <div id="cursor-container"></div>
 

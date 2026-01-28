@@ -65,6 +65,13 @@ const MODAL_CONTENT = {
     body: `
       <p>Join our movement to combat climate change through local actions and global awareness.</p>
       <p>We organize weekly seminars, school programs, and policy advocacy campaigns to push for greener regulations.</p>
+      <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 15px 0;">
+        <h4 style="color: #856404; margin: 0 0 10px 0;"><i class="fas fa-exclamation-triangle"></i> LEVEL 3 EMERGENCY</h4>
+        <p style="color: #856404; margin: 0;"><strong>Shipping Noise Pollution Crisis:</strong> Marine mammals face critical communication disruption from underwater shipping noise.</p>
+        <a href="./pages/noise-pollution-shipping.html" class="btn btn-warning" style="margin-top: 10px;">
+          <i class="fas fa-volume-up"></i> View Crisis Details
+        </a>
+      </div>
       <h4>Climate Adaptation Resources:</h4>
       <ul>
         <li><a href="./pages/environment/climate-resilient-habitats.html" class="btn btn-primary" style="margin:5px;"> 🛡️ Climate-Resilient Habitats</a></li>
@@ -287,6 +294,9 @@ function initAdditionalFeatures() {
   // Wildlife features
   initWildlifeFilter();
   initFlipCards();
+
+  // Crisis alert systems
+  initNoiseCrisisAlert();
 }
 
 // ===========================================
@@ -1451,6 +1461,15 @@ function initFlipCards() {
   });
 }
 
+/**
+ * Initialize noise pollution crisis alert system
+ * Manages Level 3 emergency alerts for shipping noise pollution
+ */
+function initNoiseCrisisAlert() {
+  // Initialize the crisis alert manager
+  window.noiseCrisisManager = new NoiseCrisisAlertManager();
+}
+
 // ===========================================
 // UTILITY FUNCTIONS
 // ===========================================
@@ -1505,6 +1524,88 @@ function isInViewport(element) {
     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
+}
+
+// ===========================================
+// NOISE POLLUTION CRISIS ALERT SYSTEM
+// ===========================================
+
+/**
+ * Noise Pollution Crisis Alert Management
+ * Handles Level 3 emergency alerts for shipping noise pollution
+ */
+class NoiseCrisisAlertManager {
+  constructor() {
+    this.alertBanner = document.getElementById('noise-crisis-alert-banner');
+    this.isDismissed = this.getDismissedStatus();
+    this.init();
+  }
+
+  init() {
+    if (!this.isDismissed && this.shouldShowAlert()) {
+      this.showAlert();
+    }
+  }
+
+  shouldShowAlert() {
+    // Show alert on homepage and relevant pages
+    const currentPath = window.location.pathname;
+    const allowedPages = ['/', '/index.html', ''];
+    return allowedPages.some(page => currentPath.endsWith(page));
+  }
+
+  showAlert() {
+    if (this.alertBanner) {
+      // Add body class for layout adjustments
+      document.body.classList.add('noise-crisis-alert-shown');
+
+      // Show banner with animation
+      this.alertBanner.style.display = 'block';
+      this.alertBanner.style.animation = 'slideDown 0.5s ease-out';
+
+      // Announce to screen readers
+      this.announceToScreenReader('Level 3 Emergency: Shipping noise pollution crisis affecting marine mammals. Critical communication disruption detected.');
+    }
+  }
+
+  hideAlert() {
+    if (this.alertBanner) {
+      this.alertBanner.classList.add('closing');
+      document.body.classList.remove('noise-crisis-alert-shown');
+
+      setTimeout(() => {
+        this.alertBanner.style.display = 'none';
+        this.alertBanner.classList.remove('closing');
+      }, 500);
+    }
+  }
+
+  dismissAlert() {
+    this.setDismissedStatus(true);
+    this.hideAlert();
+  }
+
+  getDismissedStatus() {
+    return localStorage.getItem('noiseCrisisAlertDismissed') === 'true';
+  }
+
+  setDismissedStatus(dismissed) {
+    localStorage.setItem('noiseCrisisAlertDismissed', dismissed.toString());
+  }
+
+  announceToScreenReader(message) {
+    const liveRegion = document.getElementById('status-messages');
+    if (liveRegion) {
+      liveRegion.textContent = message;
+    }
+  }
+}
+
+// Global function for close button
+function closeNoiseCrisisAlert() {
+  if (window.noiseCrisisManager) {
+    window.noiseCrisisManager.dismissAlert();
+  }
 }
 
 // ===========================================
