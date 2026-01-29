@@ -269,6 +269,9 @@
       "id": "climate-change",
       "title": "Climate Change Quiz",
       "description": "Learn about climate change, its causes, and ways to mitigate its effects.",
+      "category": "Environment",
+      "timeLimit": 180,
+      "iconClass": "fa-solid fa-cloud",
       "questions": [
         { "q": "What is the greenhouse effect?", "o": ["Plants growing in greenhouses", "Trapping heat in atmosphere", "Cooling the planet", "Creating oxygen"], "a": 1 },
         { "q": "Which gas is primarily responsible for global warming?", "o": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"], "a": 1 },
@@ -303,6 +306,9 @@
       "id": "sustainable-gardening",
       "title": "Sustainable Gardening Quiz",
       "description": "Learn about sustainable gardening practices and environmental awareness.",
+      "category": "Environment",
+      "timeLimit": 180,
+      "iconClass": "fa-solid fa-seedling",
       "questions": [
         { "q": "What is composting?", "o": ["Throwing away food waste", "Turning organic waste into fertilizer", "Burning leaves", "Using chemical fertilizers"], "a": 1 },
         { "q": "Why use native plants in gardening?", "o": ["They are cheaper", "They require less water and attract local wildlife", "They grow faster", "They need more pesticides"], "a": 1 },
