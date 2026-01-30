@@ -128,6 +128,20 @@ _Thanks to everyone supporting this initiative!_ 💚
 
 ---
 
+## 🌊 Altered River Flow from Hydropower Dams
+
+Hydropower dams significantly impact river ecosystems. This section explores:
+
+- **Fish Migration**: Investigating how disrupted flow regimes affect migratory patterns of fish species.
+- **Sediment Transport**: Analyzing changes in sediment deposition and erosion downstream.
+- **Biodiversity**: Studying the effects on aquatic and riparian biodiversity due to altered flow dynamics.
+
+This research aims to provide actionable insights for sustainable hydropower development and river ecosystem conservation.
+
+For detailed information, see: [Hydropower Dams Impact Study](MD/HYDROPOWER_DAMS_README.md)
+
+---
+
 ## 📜 License
 This project is created for education & awareness purposes only.
 
